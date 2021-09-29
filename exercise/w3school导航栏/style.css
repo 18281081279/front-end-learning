@@ -1,0 +1,23 @@
+nav div {
+    height: 40px;
+    float: left;
+    margin: auto;
+    background-color: #e8e7e3;
+}
+
+nav div:hover {
+    background-color: gray;
+}
+
+nav a {
+    display: block;
+    height: 40px;
+    line-height: 40px;
+    color: gray;
+    text-decoration: none;
+    padding-right: 10px;
+}
+
+nav a:hover{
+    color: white;
+}

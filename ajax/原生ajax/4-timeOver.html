@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id='timeOver'>1</div>
+    <script>
+        let timeOver = document.getElementById('timeOver');
+        timeOver.onclick = function () {
+            let xhr = new XMLHttpRequest();
+            xhr.timeout=2000;
+            xhr.ontimeout = function (){
+                alert('连接超时啦')
+            }
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    timeOver.innerText=xhr.response;
+                }
+            }
+            xhr.open('get', 'http://127.0.0.1:8000/timeOver');
+            xhr.send();
+        }
+
+    </script>
+</body>
+
+</html>

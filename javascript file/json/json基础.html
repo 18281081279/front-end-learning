@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--什么是 JSON？
+        JSON 指的是 JavaScript 对象标记法（JavaScript Object Notation）
+        JSON 是一种轻量级的数据交换格式
+        JSON 具有自我描述性且易于理解
+        JSON 独立于语言*
+        JSON 使用 JavaScript 语法，但是 JSON 格式是纯文本的。
+        本可被任何编程语言作为数据来读取和使用。
+    -->
+    <!--json语法
+        JSON 语法衍生于 JavaScript 对象标记法语法：
+        据在名称/值对中
+        数据由逗号分隔
+        花括号容纳对象
+        方括号容纳数组
+    -->
+    <script>
+        //javascript语句
+        var person1={name:"gx",age:18};
+        document.write(person1.name);
+        document.write("<br>");
+        
+        //json语句
+        var person2='{"name":"jpx","age":18}';
+        //parse将json语句转化为javascript对象
+        var obj2 = JSON.parse(person2);
+        document.write(obj2.name);
+        document.write("<br>");
+        //stringify将javascript对象转化为json语句
+        var text2=JSON.stringify(obj2);
+        document.write(text2);
+    </script>
+</body>
+
+</html>

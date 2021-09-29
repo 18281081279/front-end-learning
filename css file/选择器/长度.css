@@ -1,0 +1,21 @@
+/*长度单位： px根据像素，%根据子代占父代的百分比，em根据字体大小，rem根据跟标签字体大小*/
+.lengthofpx{
+    width: 200px;
+    height: 100px;
+    background-color: darkblue;
+}
+
+.lengthofpercent{
+    width: 50%;
+    height: 50%;
+    background-color:darkkhaki;
+}
+
+.lengthofem{
+    width: 10em;
+    height: 10em;
+    background-color:darkmagenta;
+}
+
+
+

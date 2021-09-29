@@ -1,0 +1,11 @@
+.color1 {
+    width: 100px;
+    height: 100px;
+    background-color: rgba(255/*红(0~255)*/, 0/*绿(0~255)*/, 0/*蓝(0~255)*/, .5/*(0~1)*/);
+}
+
+.color2{
+    width: 100px;
+    height: 100px;
+    background-color: hsl(20/*色相(0~360)*/,20%/*饱和度(0~100%)*/,20%/*亮度(0~100%)*/);
+}

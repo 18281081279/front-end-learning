@@ -1,0 +1,8 @@
+.table1{
+    border: 1px;
+    border-color: brown;
+    border-style: solid;
+    width: 500px;
+    border-collapse: collapse;
+    margin: 0 auto;
+}

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id='but1'></button>
+    <script>
+        let but1 = document.getElementById('but1');
+        let but2 = document.getElementById('but2');
+        let x = null;
+        let flag = false;
+        but1.onclick = function () {
+            if (flag) {
+                x.abort();
+            }
+            x = new XMLHttpRequest();
+            flag = true;
+            x.open('get', 'http://127.0.0.1:8000/timeOver');
+            x.send();
+            if (x.readyState == 4) {
+                flag = false;
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+
+<head>
+    <meta utf-8>
+    <!--设置字符集。避免乱码-->
+    <meta name="keywords" content="jpx,html">
+    <!--不是给用户看的，搜索jpx，可能就会搜索到这个网页-->
+    <meta name="description" content="这是蒋沛汛的第一个网站">
+    <!--<meta http-equiv="refresh" content="3;http://www.baidu.com">-->
+    <!--三秒后会跳转到百度-->
+    <title>我的第一个网页</title>
+</head>
+
+
+<body style="background-color: powderblue;">
+
+    <a href="#bottom">去底部</a>
+    <br>
+    <a href="javascript">这是一个占位超链接，什么都不会发生</a>
+    <header>
+        <li>jpx的第一个网页</li>
+    </header>
+    <hr>以上是展示部分的头部，以下是展示部分的主体
+    <main>
+        <h1 style="font-family: times;color: red;text-align: center">这是第一个标题</h1>
+
+        <br>
+        <p style="text-align: center; color: black;">第一段</p>
+        <p style="text-align: center;font-size:14">这是第一个标题的第一个段落
+            <br>
+            <!--空行-->
+            <a href="http://www.baidu.com" target="_blank">点击进入百度</a>
+            <!-- 绝对引用，这是一个链接-->
+            <a href="./结构模板.html" target="_self">查看html模板</a>
+            <!--相对路径， ./用于同一目录下的文件 ../用于上一级目录的文件 -->>
+            <!--target="_blank"在下一页面打开超链接，默认值为_self在当前页面打开超链接-->
+        </p>
+
+        <p style="text-align: center; color: black;">第二段</p>
+        <p style="text-align:center;font-size:14;">这里是第一个标题的第二个段落
+            <pre style="font-size: 14;text-align: center;font-family: times;color: blueviolet;">
+                pre标签可 以 展示 空格和
+                换行
+                </pre>
+        </p>
+        <hr> 标题分隔线
+        <!-- 标题分隔线 -->
+
+        <h2 style="font-family: vernada;color: red;text-align: center;">这是第二个标题</h2>
+        <br>
+        <p style="text-align: center; color: black;">第一段</p>
+        <p>
+            <dl>
+                <!--定义-->
+                <dt>
+                <!--解释结构（哪里是标题，哪里是段落）-->
+
+            </dt>
+            </dl>
+            <ul>
+                <p style="color:blueviolet;">我的学习装备</p>
+                <!--定义一个无序列表-->
+                <li>surface</li>
+                <!--展示列表元素-->
+                <li>surface pen</li>
+                <li>syrface keyboard</li>
+            </ul>
+            <ol>
+                <p style="color:blueviolet;">我的学习装备</p>
+                <!--定义一个有序序列表-->
+                <li>surface</li>
+                <!--展示列表元素-->
+                <li>surface pen</li>
+                <li>syrface keyboard</li>
+            </ol>
+        </p>
+
+        <br>
+        <p style="text-align: center; color: black;">第一段</p>
+        <p>
+            <p style="color:blueviolet;">我的电脑壁纸库</p>
+            <img width="400" src="wallpaper/1.jpg" alt="我的第一个壁纸">
+        </p>
+        <p>
+            <iframe src="https://www.qq.com" frameborder="0"></iframe>
+            <!--内联框架-->
+        </p>
+    </main>
+
+    <hr>以上是展示部分的主体，以下是展示部分的尾部
+    <footer>
+        <li>尾部</li>
+    </footer>
+    <a href="#" id="bottom">回到顶部</a>
+    <!--id给标签赋上唯一的名称-->
+
+</body>

@@ -1,0 +1,73 @@
+.clearfix::after,
+.clearfix::before{
+    content: '';
+    display: table;
+    clear: both;
+}
+
+.topdiv{
+    background-color: #e3e4e5;
+    border-bottom:1px solid rgb(204,204,202);
+    clear: both;
+}
+.div1 {
+    background-color: #e3e4e5;
+    width: 1190px;
+    line-height: 30px;
+    margin: 0 auto;
+    font-size: 14px;
+    color: #999;
+    height: 30px;
+}
+.div2 {
+    float: left;
+}
+
+
+.div3:hover{
+    background-color: white;
+    border: 1px solid rgb(204,204,202);
+    border-bottom: none;
+}
+
+
+
+.div2:hover .citylist{
+    display: block;
+    border-top:none;
+}
+
+
+.citylist{
+    background-color:white;
+    height:436px;
+    width:320px;
+    border:1px;
+    border-style: solid;
+    border-color: rgb(204,204,202);
+    display: none;
+    position: absolute;
+}
+
+.ul1 {
+    float: right;
+}
+
+.li1{
+    float: left;
+}
+
+.line {
+    float: left;
+}
+
+a{
+    text-decoration: none;
+}
+a:hover{
+    color: red;
+}
+
+.red{
+    color: red;
+}

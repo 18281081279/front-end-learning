@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <button id="but1">get</button>
+    <button id="but2">post</button>
+    <button id="but3">ajax</button>
+    <script>
+        let get = document.getElementById('but1');
+        //发送get
+        //axois.get('url',{其他配置}).then({})
+        get.onclick = function () {
+            axios.get('http://127.0.0.1:8000/axios', {
+                //url参数
+                params: {
+                    name: 'axios_get'
+                },
+                //设置请求头信息
+                headers: {
+                    name: 'axios_get',
+                }
+            })
+                .then(function (value) {
+                    console.log(value.data.name);
+                })
+        }
+        //发送post
+        //axios.post('url',{请求体},{其他配置}).then({})
+        let post = document.getElementById('but2');
+        post.onclick = function () {
+            axios.post('http://127.0.0.1:8000/axios', {
+                //请求体
+                name: 'jpx',
+                age: 20,
+            }, {
+                //请求头
+                headers: {
+                    name: 'axios_post'
+                }
+            })
+                .then(function (val) {
+                    console.log(val);
+                })
+        }
+        //通用方法
+        //axois({}).then({})
+        let common = document.getElementById('but3');
+        common.onclick = function () {
+            axios({
+                //类型
+                method: 'post',
+                //url
+                url: 'http://127.0.0.1:8000/axios',
+                //url参数
+                params: {
+                    name: 'common'
+                },
+                //请求体
+                headers: {
+                    name: 'common'
+                }
+            }).then(function (response) {
+                console.log(response);
+            })
+        }
+    </script>
+</body>
+
+</html>

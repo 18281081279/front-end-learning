@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="./reset.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="head-wrapper">
+            <div class="head">jpx的记事本</div>
+        </div>
+        <div class="banner-wrapper">
+            <div class="banner">
+                <input type="text" class="inp" @keyup.enter="getThings" v-model="newThing[index]">
+                <ul class="thingList" v-show="thingArr.length!=0">
+                    <li v-for="(thing,index) in thingArr">
+                        <div>
+                            <span>{{index+1}}.</span>
+                            <span>{{thing}}</span>
+                            <button @click="moveThing(index)" class="delete">x</button>
+                        </div>
+                    </li>
+                    <div class="thingNum">{{thingArr.length}}things
+                        <button class="clear" @click="clear">clear</button>
+                    </div>
+                    <div class="foot1"></div>
+                    <div class="foot2"></div>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    var app1 = new Vue({
+        el: ".banner-wrapper",
+        data: {
+            newThing: "",
+            thingArr: [],
+            newThing: [],
+            index: 0,
+        },
+        methods: {
+            getThings: function () {
+                this.thingArr.push(this.newThing[this.index])
+                this.index++;
+            },
+            moveThing: function (index) {
+                this.thingArr.splice(index, 1)
+            },
+            clear: function () {
+                this.thingArr = [];
+                this.newThing = [];
+            }
+        }
+    })
+</script>
+</html>

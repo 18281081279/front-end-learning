@@ -1,0 +1,78 @@
+
+
+$(function () {
+    $.ajax({
+        url: '/hotel/info',
+        type: 'post',
+        dataType: 'json',
+        data: {
+            hotel_id: $.cookie('hotel_id'),
+        },
+        success: function (res) {
+            console.log(res)
+            console.log(res.data)
+            $("#img1").attr("src", res.data.photo1);
+            $("#img2").attr("src", res.data.photo2);
+            $("#img3").attr("src", res.data.photo3);
+            $("#img4").attr("src", res.data.photo4);
+            $("#img5").attr("src", res.data.photo5);
+            $("#hotel_name").html(res.data.hotelTranslatedName);
+            $("#En-name").html(res.data.hotelName);
+            $("#hotel-intro").html(res.data.overview);
+            $("#star-level").html(res.data.starRating);
+
+            layui.use('rate', function(){
+                var rate = layui.rate;
+
+                //渲染
+                var ins1 = rate.render({
+                    elem: '#numStar',  //绑定元素
+                    readonly:true,
+                    half:true,
+                    value:res.data.starRating
+                });
+            });
+
+
+            var points = [
+                { "lng": res.data.longitude, "lat": res.data.latitude },
+            ];
+            //创建标注点并添加到地图中
+            function addMarker(points) {
+                //循环建立标注点
+                for (var i = 0, pointsLen = points.length; i < pointsLen; i++) {
+                    var point = new BMap.Point(points[i].lng, points[i].lat); //将标注点转化成地图上的点
+                    var marker = new BMap.Marker(point); //将点转化成标注点
+                    map.addOverlay(marker);  //将标注点添加到地图
+
+                }
+            }
+            function showInfo(thisMarker, point) {
+                //获取点的信息
+                var sContent =
+                    '<ul style="margin:0 0 5px 0;padding:0.2em 0">'
+                    + '<li style="line-height: 26px;font-size: 15px;">'
+                    + '<span style="width: 50px;display: inline-block;">id：</span>' + point.id + '</li>'
+                    + '<li style="line-height: 26px;font-size: 15px;">'
+                    + '<span style="width: 50px;display: inline-block;">名称：</span>' + point.name + '</li>'
+                    + '<li style="line-height: 26px;font-size: 15px;"><span style="width: 50px;display: inline-block;">查看：</span><a href="' + point.url + '">详情</a></li>'
+                    + '</ul>';
+                var infoWindow = new BMap.InfoWindow(sContent); //创建信息窗口对象
+                thisMarker.openInfoWindow(infoWindow); //图片加载完后重绘infoWindow
+            }
+            //创建地图
+            var map = new BMap.Map("allmap");
+            map.centerAndZoom(new BMap.Point(104.07, 30.67), 11);  // 设置中心点
+            map.centerAndZoom("成都");
+            map.setCurrentCity("成都");          //设置为成都
+            map.addControl(new BMap.MapTypeControl());
+            map.enableDoubleClickZoom(true);
+            addMarker(points);
+            $("#num-views").text(res.data.numberOfReviews);
+            $("#rating-views").html(res.data.ratingAverage);
+        },
+    })
+})
+
+
+

@@ -1,0 +1,53 @@
+body {
+    background-color: white;
+}
+
+.ul1 {
+    width: 200px;
+    height: 300px;
+    background-color: whitesmoke;
+    margin: 10px 10px 10px 10px;
+    /*overflow 来开启BFC,开启BFC之后，可以包含浮动元素，不会高度塌陷*/
+    /*clear来清楚浮动元素对当前元素的影响值可以为left right both*/
+}   
+
+/*用clear after before来解决高度塌陷，和外边框重叠问题*/
+.clearfix::after,
+.clearfix::before{
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.ul1 li {
+    width: 200px;
+    height: 100px;
+    line-height: 100px;
+}
+
+.ul1 li a {
+    text-decoration: none;
+    color: plum;
+}
+
+.ul1 li:hover {
+    background-color: #d9d9d9;
+}
+
+.ul1 li img {
+    width: 100px;
+    height: 100px;
+    float: left;
+    /*浮动*/
+    /*box-shadow: 0.1px 0.1px 3px cyan;*/
+    /*阴影*/
+}
+
+.ul1 li a span {
+    font-size: 13px;
+    float: left;
+}
+
+.ul1 li a span:hover {
+    color: red;
+}

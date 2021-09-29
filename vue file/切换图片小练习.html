@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            border: 1px solid #ff9400;
+            height: 200px;
+            width: 200px;
+            margin: 0 auto;
+            display: flex;
+            position: relative;
+        }
+
+        img {
+            width: 100%;
+        }
+
+        .prev {
+            height: 20px;
+            position: absolute;
+            top: 90px;
+        }
+
+        .next {
+            height: 20px;
+            position: absolute;
+            top: 90px;
+            right: 0px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app" v-bind:class="isActive?'container':''">
+        <button class="prev" @click="imgPrev()" v-show="isShowPrev">上一张</button>
+        <img v-bind:src="imgArray[index]">
+        <button class="next" @click="imgNext()" v-show="isShowNext">下一张</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script type="text/javascript">
+        var index;
+        var app = new Vue({
+            el: "#app",
+            data: {
+                imgArray: ["./iconfont/img1-1.png", "./iconfont/img1-2.png", "./iconfont/img2-1.png", "./iconfont/img2-2.png", "./iconfont/img3-1.png", "./iconfont/img3-2.png"],
+                index: 0,
+                isActive: true,
+                isShowPrev: false,
+                isShowNext: true,
+            },
+            methods: {
+                imgPrev: function () {
+                    if (this.index != 0) {
+                        this.isShowPrev = true;
+                        this.index--;
+                    }
+                    if (this.index != 5) {
+                        this.isShowNext = true;
+                    }
+                    if (this.index == 0) {
+                        this.isShowPrev = false;
+                    }
+                },
+                imgNext: function () {
+                    if (this.index != 5) {
+                        this.isShowNext = true;
+                        this.index++;
+                    }
+                    if (this.index != 0) {
+                        this.isShowPrev = true;
+                    }
+                    if (this.index == 5) {
+                        this.isShowNext = false;
+                    }
+                },
+            }
+        })
+    </script>
+</body>
+
+</html>

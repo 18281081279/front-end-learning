@@ -1,0 +1,137 @@
+
+/* 1通配选择器 */
+
+* {
+    color: black;
+}
+
+/* 2元素选择器 */
+
+p {
+    color: tomato;
+    font-size: 15px;
+    font-family: times;
+}
+
+a {
+    color: springgreen;
+}
+
+/* 3id选择器 */
+
+#id-1 {
+    color: indigo;
+}
+
+/* 4类选择器,一个标签可以使用多个类选择器*/
+
+.blue {
+    color: blue;
+}
+
+.fsize20px {
+    font-size: 20px;
+}
+
+/* 5交集选择器*/
+
+div.blue {
+    font-size: 30px;
+}
+
+/* 6并集选择器*/
+
+h1, span {
+    color: green;
+}
+
+/*7子元素选择器*/
+
+div>div {
+    color: deeppink;
+}
+
+/*8后代元素选择器*/
+
+div span {
+    color: dimgray;
+}
+
+/*兄弟元素选择器的示例*/
+
+div+span {
+    color: goldenrod;
+}
+
+/*属性选择器：title*/
+
+p[title] {
+    color: maroon;
+}
+
+/*以开头^ 以结尾$ 含有什么* */
+
+P[title^=a] {
+    color: mediumturquoise;
+}
+
+/*伪类表示状态,伪类选择器就是根据想选取的对象的状态对想选取的对象进行操作*/
+
+ul>li:first-child {
+    color: darksalmon;
+}
+
+ul>li:first-of-type {
+    color: magenta;
+}
+
+ul>li:nth-child(4) {
+    color: mediumspringgreen;
+}
+
+/*超链接的伪类:link、visited*/
+
+/*link表示没有点击过的，visited表示点击过的（只能修改颜色）*/
+
+a:link {
+    color: steelblue;
+}
+
+a:visited {
+    color: thistle;
+}
+
+/*通用的鼠标伪类:hover、active*/
+
+/*hover表示鼠标悬浮状态，active表示点击状态*/
+
+p:hover {
+    color: teal;
+}
+
+p:active {
+    color: tomato;
+}
+
+/*伪元素：::first-letter第一个字母,::first-line第一行,::selection选中的，::before开头前的（要设置内容），::after结尾后的*/
+
+div::first-letter {
+    color: brown;
+}
+
+div::before {
+    content: "[";
+}
+
+div::after {
+    content: "]";
+}
+
+/* 继承,继承没有优先级*/
+
+p {
+    background-color: navajowhite;
+}
+
+
+

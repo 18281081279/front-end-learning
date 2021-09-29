@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #result {
+            width: 200px;
+            height: 200px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="result"></div>
+    <script>
+        let result = document.getElementById("result");
+        result.addEventListener("mouseover", function () {
+            //1:创建对象
+            let xhr = new XMLHttpRequest();
+            //2:初始化，创建请求
+            xhr.open("post", "http://127.0.0.1:8000/postServer");
+            //设置请求头
+            xhr.setRequestHeader('content-type','application/x-www-form-urlencoded')
+            xhr.setRequestHeader('name','jpx');
+            //3:发送请求
+            xhr.send('123123');//设置参数
+            //
+            //4:事件绑定
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && (xhr.status >= 200 && xhr.status < 300)) {
+                    result.innerText = xhr.response;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

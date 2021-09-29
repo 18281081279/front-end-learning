@@ -1,0 +1,137 @@
+/*  
+    学习内容:
+    1盒子的基本属性：设置内容，边框(border)，内边距(padding),外边距(margin);
+    2水平竖直方向的布局：水平方向在box2(子元素)中，竖直方向在box(父元素)中主要说了溢出；
+    3外边距的折叠
+    4内联元素的特点
+*/
+
+/* 
+    一些通用属性：
+    width,height
+    display设置类型:inline行内元素，block块元素，inline-block行内块元素（既可以设置高度宽度，又不会独占一行）,none不显示
+    visibility设置显示状态:hidden隐藏但占位置（上面的none不占位置）,visited默认值显示
+*/
+.box1 {
+    /*设置内容区*/
+    width: 100px;
+    height: 100px;
+    background-color: cornflowerblue;
+    /*设置边框*/
+    border-width: 30px 40px 50px 60px;
+    border-color: orangered olivedrab palevioletred wheat;
+    border-style: solid dashed dotted double;
+    /*设置内边距*/
+    padding: 20px 20px 20px 20px;
+    /*设置外边距*/
+    margin: 30px 30px 30px 30px;
+    /*
+    超出父元素的部分叫溢出:overflow
+    overflow:①visible默认值，溢出的会显示;②hidden将被隐藏;③scroll将生成滚动条;④auto根据需要生成;
+    也有overflow-x;overflow-y;
+    */
+    overflow: auto;
+}
+
+/*
+    子盒子在父盒子的内容区中,子盒子的左外边距+边框+左内边距+内容宽度+右内边距+右边框+右外边距=父内容宽度
+    如果不满足上边，则会自动调整右外边距或自己设置的auto
+    如果将一个宽度和一个外边距同时设置为auto,则宽度会最大
+    如果将一个宽度和两个外边距同时设置为auto,则宽度会最大
+    如果将两个外边距同时设置为auto,则居中
+*/
+
+.box2 {
+    width: auto;
+    height: 200px;
+    /*会溢出*/
+    background-color: black;
+}
+
+/*
+   兄弟元素的水平外边距会发生重叠：取两者最大值公用。若一正一负则取两者之和
+*/
+
+.box3 {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    margin-bottom: 50px;
+}
+
+.box4 {
+    width: 100px;
+    height: 100px;
+    background-color: yellow;
+    margin-top: 60px;
+}
+
+/*
+   父子元素的水平外边距折叠，需要特殊处理
+*/
+
+.box5 {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+}
+
+.box6 {
+    width: 50px;
+    height: 50px;
+    background-color: yellow;
+    padding-top: 30px;
+}
+
+/*
+    内联元素不能设置高度宽度，但是可以通过display来设置成块元素
+*/
+
+a {
+    display:block;
+    font-size:30px;
+    color:violet;
+    height: 40px;
+    background-color:aqua;
+}
+
+/*positon */
+
+.box7{
+    background-color:tomato;
+    width: 100PX;
+    height: 100PX;
+    /*相对定位，相对于自己原先的位置*/
+    position:relative;
+    left:200px;
+    top:90px;
+}
+
+.box8{
+    background-color: yellow;
+    width: 100px;
+    height: 100px;
+    /*绝对定位，相对于上一个有定位的祖先元素，若没有则相对于根目录*/
+    position:absolute;
+    top:0px;
+    left:0px;
+}
+
+.box9{
+    background-color: thistle;
+    width: 50px;
+    height: 50px;
+    /*相对于视框*/
+    position:fixed;
+    left: 0px;
+    top: 0px;
+}
+
+.box10{
+    width: 40px;
+    height: 40px;
+    /*粘滞定位，指定为某一个位置就不动了*/
+    position: sticky;
+    background-color:deeppink;
+    bottom: 50px;
+}

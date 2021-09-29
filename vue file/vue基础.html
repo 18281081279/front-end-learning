@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .haveBorder {
+            border: 1px red solid;
+        }
+    </style>
+</head>
+
+<body>
+    <!--Vue基础
+        el：选中要管理的元素
+        实例范围：el选中的元素及其后代元素
+        适用选择器：都可以，但推荐id选择器
+        适用标签：双标签，除了body、html
+    -->
+
+    <!--Vue基础-->
+    <div id="app1">{{message1}}</div>
+    <div class="app2">{{message2}}</div>
+    <div id="app3">{{message3.name}}{{message3.age}}</div>
+    <div id="app4">{{message4[0]}}{{message4[1]}}</div>
+    <!---------------------------------------------------------------------------------------------------->
+    <!--                      Part①：绑定内容，事件绑定：v-text、v-html、v-on                             -->
+
+    <!--v-text  改变文本-->
+    <div id="app5">
+        <h3 v-text="message5_1+'!!!'">这也是一个{{message5_1}},这个不会被显示，被之前的覆盖了</h2>
+            <h3>这样写就不会被覆盖,使用差值表达式就可以替换指定的内容：{{message5_2}}</h3>
+    </div>
+    <!--v-html  改变标签和文本--->
+    <div id="app6">
+        <h3 v-html="message6"></h3>
+    </div>
+    <!--v-on-@    可以替换为@,为元素绑定事件，鼠标点击@click,鼠标悬浮mouseenter,双击鼠标dblclick-->
+    <div id="app7">
+        <input type="button" value="v-on-click实例" v-on:click="fun1">
+        <input type="button" value="v-on-mouseenter实例" v-on:mouseenter="fun2">
+        <input type="button" value="v-on-dblclick实例" v-on:dblclick="fun3">
+    </div>
+    <!--计数器   综合小练习-->
+    <div id="app8">
+        <button @click="sub">-</button>
+        <span v-text="count"></span>
+        <button @click="add">+</button>
+    </div>
+    <br>
+
+    <!---------------------------------------------------------------------------------------------------->
+    <!--                        Part②：显示切换，属性绑定：v-show、v-if、v-bind                           -->
+
+    <!--v-show   可以改变元素display属性，先显示或者隐藏元素-->
+    <div id="app9">
+        <button @click="changeIsShow">切换显示状态</button>
+        <img v-show="isShow" src="../exercise/小米官网/img/logo.png">
+    </div>
+    <!--v-if     可以直接显示或隐藏dom-->
+
+    <div id="app10">
+        <button @click="changeIsShow">切换显示状态</button>
+        <img v-if="isShow" src="../exercise/小米官网/img/logo.png">
+    </div>
+    <!--v-bind   可以改变元素的属性-->
+    <div id="app11">
+        <img v-bind:src="imgsrc" v-bind:title="imgtitle" v-bind:class="isBorder?'haveBorder':''" @click="fun1">
+    </div>
+
+    <!---------------------------------------------------------------------------------------------------->
+    <!--                        part③:循环列表，表单元素绑定：v-if、v-on补充、v-model                      -->
+    <!--v-for    可以循环列表-->
+    <div id="app12">
+        <ul>
+            <li v-for="student in stuArr">{{student}}</li>
+        </ul>
+        <button v-on:click="addFood">add food</button>
+        <button v-on:click="moveFood">move food</button>
+        <ul>
+            <li v-for="food in foodArr">{{food.name}}</li>
+        </ul>
+    </div>
+    <!--v-on补充  可以传递参数，可以设置绑定特殊事件-->
+    <div id="app13">
+        <input type="button" value="点击为他加油" @click="send('jpx','try your best!!!')">
+        <input type="text" @keyup.enter="send('jpx','try your best!!!')">
+    </div>
+    <!--v-model   可以双向绑定元素-->
+    <div id="app14">
+        <input v-model="message14" type="text">
+        <button @click="getMessage14">点击获取massage14</button>
+        <button @click="reSetMessage14">点击初始化massage14</button>
+    </div>
+    <!--                                           javacript                                                    -->
+    <!--                                           javacript                                                    -->
+    <!--                                           javacript                                                    -->
+    <!--                                           javacript                                                    -->
+    <!--                                           javacript                                                    -->
+    <!--                                           javacript                                                    -->
+    <!--                                           javacript                                                    -->
+    <!--                                           javacript                                                    -->
+    <!--                                           javacript                                                    -->
+    <!--script-->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        //绑定id选择器，修改文本
+        var app1 = new Vue({
+            el: "#app1",
+            data: {
+                message1: "hello Vue!"
+            }
+        })
+
+        //绑定类选择器，修改文本
+        var app2 = new Vue({
+            el: ".app2",
+            data: {
+                message2: "jpx!"
+            }
+        })
+        //修改为对象
+        var app3 = new Vue({
+            el: "#app3",
+            data: {
+                message3: {
+                    name: "jpx",
+                    age: 18
+                }
+            }
+        })
+        //修改为数组
+        var app4 = new Vue({
+            el: "#app4",
+            data: {
+                message4: [1, 2, 3, 4, 5]
+            }
+        })
+        //v-text
+        var app5 = new Vue({
+            el: "#app5",
+            data: {
+                message5_1: "v-text实例",
+                message5_2: "实例2 哈哈哈"
+            }
+        })
+        //v-html
+        var app6 = new Vue({
+            el: "#app6",
+            data: {
+                message6: "<a href='http://www.baidu.com'>t-html的实例！</a>"
+            }
+        })
+        //v-on
+        var app7 = new Vue({
+            el: "#app7",
+            methods: {
+                fun1: function () {
+                    alert("click成功")
+                },
+                fun2: function () {
+                    alert("mouseenter成功")
+                },
+                fun3: function () {
+                    alert("dblclick成功")
+                }
+            }
+        })
+        //计数器
+        var app8 = new Vue({
+            el: "#app8",
+            data: {
+                count: 0
+            },
+            methods: {
+                sub: function () {
+                    this.count--;
+                    if (this.count < 0) {
+                        alert("已到达下限");
+                        this.count = 0;
+                    }
+                },
+                add: function () {
+                    this.count++;
+                    if (this.count > 10) {
+                        alert("已达到上限");
+                        this.count = 10;
+                    }
+                }
+            }
+        })
+        //v-show
+        var app9 = new Vue({
+            el: "#app9",
+            data: {
+                isShow: false
+            },
+            methods: {
+                changeIsShow: function () {
+                    this.isShow = !this.isShow;
+                }
+            }
+        })
+        //v-if
+        var app10 = new Vue({
+            el: "#app10",
+            data: {
+                isShow: false
+            },
+            methods: {
+                changeIsShow: function () {
+                    this.isShow = !this.isShow;
+                }
+            }
+        })
+        //v-bind
+        var app11 = new Vue({
+            el: "#app11",
+            data: {
+                imgsrc: "../exercise/小米官网/img/logo.png",
+                imgtitle: "小米官网",
+                isBorder: true
+            },
+            methods: {
+                fun1: function () {
+                    this.isBorder = !this.isBorder;
+                }
+            }
+        })
+        //v-for
+        var app12 = new Vue({
+            el: "#app12",
+            data: {
+                stuArr: ["jpx", "gx", "lss"],
+                foodArr: [{ name: "eggs" }, { name: "beaf" }, { name: "chicken" }]
+            },
+            methods: {
+                addFood: function () {
+                    this.foodArr.push({ name: "new food" });
+                },
+                moveFood: function () {
+                    this.foodArr.shift();
+                }
+            }
+        })
+        //v-on补充
+        var app13 = new Vue({
+            el:"#app13",
+            methods:{
+                send:function(p1,p2){
+                    alert(p1+","+p2);
+                }
+            }
+        })
+        //v-model
+        var app14 = new Vue({
+            el:"#app14",
+            data:{
+                message14:"jpx"
+            },
+            methods:{
+                getMessage14:function(){
+                    alert(this.message14);
+                },
+                reSetMessage14:function(){
+                    this.message14="xxx";
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
