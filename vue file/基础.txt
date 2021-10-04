@@ -1,0 +1,63 @@
+一:什么是vue?
+    实现构建用户界面：使用vue区填充html中的数据
+    框架：vue指令、组件（对UI结构的复用）、路由、Vuex、Vue组件库
+
+二：Vue的特性
+    1：数据驱动试图：数据变化会驱动视图自动更新，好处是我们只需要维护好数据，那么页面就会被自动渲染
+    2：双向数据绑定：JS数据的变化会被自动渲染到页面上，页面表单中的数据变化时候，也会更新到JS数据中
+
+    MVVM：MVVM是实现两个特性的底层原理
+        Model:数据源、View：视图、ViewModel：就是Vue的实例
+
+        例如
+        let app1 = new Vue({      ---------->new Vue（） 得到实例，就是ViewModel
+            el:'#app1',           ---------->就是view视图区域
+            data:{                ---------->                         
+                username:'xx'     ---------->就是Model数据源
+            }                     ---------->
+        })
+
+三：指令
+    1：内容渲染指令：v-text、{{}}、v-html
+        v-text：会覆盖元素内部的值
+        {{}}：插值表达式，解决内容覆盖问题,可以写表达式
+        v-html：可以将标签渲染到页面
+    
+    2：属性绑定指令:v-bind('v-bind'可以简写为':')
+        v-bind：可以写表达式，如果进行拼接字符串应带带引号，如：
+                            <div :id=''box'+'1''></div> 即<div id=''box1></dic>
+
+    3：事件绑定指令：v-on（'v-on'可以简写为@）
+        v-on:click、v-on:input、v-on:keyup……
+        时间修饰符：@.prevent(阻止默认行为，例如阻止a连接的跳转)
+                   @.stop（阻止事件冒泡）
+                   @.capture（以捕获模式出发当前的事件处理函数）
+                   @.onde（绑定事件只触发一次）
+                   @.self（只有在event.target是当前元素自身时触发事件处理函数）
+        
+        按键修饰符：@.keyup.enter(只有按键是回车时触发)
+                   @.keyup.esc（只有按键是esc时触发）
+                
+    4：双向绑定指令：v-model
+        适用的元素:input、textarea、select
+        修饰符:.number（将用户输入的值转换为数值）
+               .trim（忽略输出的首尾空字符）
+               .lazy（在change是而不是input时更新）
+
+    5：条件渲染指令：v-if、v-show
+        v-show：操作元素的display属性，如果频繁切换,v-show性能更好
+        v-if：操作dom元素,可以配套v-else使用
+        实际开发中一般使用v-if
+
+    6：列表渲染：v-for
+
+        例如：data:{
+            list:[
+                {name:'aaa'},
+                {name:'bbb'}]
+        }
+        key的值只能为数字或者字符串且值不能重复(提升性能，避免列表混乱)
+        <div v-for='item in list' :key="item.id">name is {{item.name}}</div>
+        或<div v-for='(item,index) in list' :key="item.id">name is {{item.name}}</div>可以获取到索引
+
+    
