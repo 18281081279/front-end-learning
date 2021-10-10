@@ -60,4 +60,106 @@
         <div v-for='item in list' :key="item.id">name is {{item.name}}</div>
         或<div v-for='(item,index) in list' :key="item.id">name is {{item.name}}</div>可以获取到索引
 
+四：过滤器(filter节点)（vue3已经没有用过滤器）
+    与插值表达式{{}}和v-bind一起使用
+    {{message|capitalize(a,b)}}
+    全局过滤器：
+    Vue.filter("name",fun(){
+        ……
+    })
+
+    私有过滤器：
+    data:{}
+    method:{}
+    filter(val):{
+        ……
+    }
+
+五：侦听器（watch节点）
+    watch侦听器允许开发者监视数据变化，从而针对数据的变化做特定的操作
+    语法：
+    ①   data:{
+          username:'',
+        }
+        //对象格式(无法在打开页面时触发、不能侦听对象的属性)
+        watch:{
+         //侦听器
+          username(newVal,oldVal){
+                 ……
+            }
+        }
+        //方法格式
+        watch:{
+        //侦听器
+            username{
+                //处理函数
+                handler(newVal,OldVal){
+                    ……
+                }
+                //打开页面是否触发
+                immeadiate:true/false
+            }
+        }
+    ②   data:{
+            info:{
+             username:''
+          }
+        }
+        watch:{
+            //侦听器,侦听所有属性
+            info:{
+                //处理函数
+                handler(newVal){
+                    ……
+                }
+                //只要对象中任意属性值变了，就出发
+                deep:true
+            }
+            //侦听器，侦听单个属性
+            'info.username'(newVal){
+                ……
+            }
+        }
+
+六：计算属性(computed节点)
+    目的：实现代码复用,计算属性中依赖的数据变化了,计算属性可以自动更新
+    //要定义成方法格式,使用时作为属性使用
+    computed:{
+        rgb:{
+            ……
+        }
+    }
+
+七：axios
+    返回值result是promise对象
+    服务器返回的数据在result.data中
+    axios({
+        method:'请求的类型',
+        url:'请求的url地址',
+        //url中的查询参数,get中传参 
+        params:{},
+        //请求体参数,post中传参
+        data:{}
+    }).then((result)=>{
+        //.then 用来指定成功之后的回调函数
+        //形参中的result是请求成功后的的结果
+    })
+    
+    或者
+    async function(){
+    await axios({
+        ……
+    })
+    } 
+
+    使用解构赋值获取data属性
+    const{data : res} = await axios({
+        method:'get',
+        url:''
+    })
+    console.log(res.data)
+
+八：vue cli
+    创建项目:vue create
+    
     
